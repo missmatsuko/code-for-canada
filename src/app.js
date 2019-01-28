@@ -1,6 +1,10 @@
+import {DateTime} from 'luxon'; // Date formatting and comparing library
+
 const sourceData = require('./data.csv');
 
 const summaryData = sourceData.reduce(((accumulator, currentValue) => {
+  const currentValueDate = DateTime.fromFormat(currentValue.violation_date, 'yyyy-MM-dd H:mm');
+
   // If the category exists in summary data object...
   if (accumulator.hasOwnProperty(currentValue.violation_category)) {
     // Get the category item
@@ -10,15 +14,13 @@ const summaryData = sourceData.reduce(((accumulator, currentValue) => {
     accumulatorItem.violation_count = accumulatorItem.violation_count + 1;
 
     // If the violation data is earlier than the earliest violation date, update it with the current item's date
-    // NOTE: Since dates are always ISO-8601 and no timezones, no need to convert to date object (yet)
-    if (currentValue.violation_date < accumulatorItem.earliest_violation_date) {
-      accumulatorItem.earliest_violation_date = currentValue.violation_date;
+    if (currentValueDate < accumulatorItem.earliest_violation_date) {
+      accumulatorItem.earliest_violation_date = currentValueDate;
     }
 
     // If the violation data is later than the latest violation date, update it with the current item's date
-    // NOTE: Since dates are always ISO-8601 and no timezones, no need to convert to date object (yet)
-    if (currentValue.violation_date > accumulatorItem.latest_violation_date) {
-      accumulatorItem.latest_violation_date = currentValue.violation_date;
+    if (currentValueDate > accumulatorItem.latest_violation_date) {
+      accumulatorItem.latest_violation_date = currentValueDate;
     }
   }
   // If the category doesn't exist in the summary data object...
@@ -26,8 +28,8 @@ const summaryData = sourceData.reduce(((accumulator, currentValue) => {
     // Create the category in the summary data object with the current item's data
     accumulator[currentValue.violation_category] = {
       violation_count: 1,
-      earliest_violation_date: currentValue.violation_date,
-      latest_violation_date: currentValue.violation_date,
+      earliest_violation_date: currentValueDate,
+      latest_violation_date: currentValueDate,
     };
   }
 
@@ -45,8 +47,8 @@ for (const category in summaryData) {
   const tableRowHtml = `
     <td>${category}</td>
     <td>${summaryData[category].violation_count}</td>
-    <td>${summaryData[category].earliest_violation_date}</td>
-    <td>${summaryData[category].latest_violation_date}</td>
+    <td>${summaryData[category].earliest_violation_date.toFormat('MMMM d, yyyy')}</td>
+    <td>${summaryData[category].latest_violation_date.toFormat('MMMM d, yyyy')}</td>
   `;
 
   tableRow.innerHTML = tableRowHtml;
