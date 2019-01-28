@@ -1,0 +1,5 @@
+# Front-end packages
+/node_modules
+
+# Public directory
+/public

@@ -1,0 +1,152 @@
+---
+  extends:
+    - eslint:recommended
+
+  env:
+    browser: true
+    es6: true
+    node: true
+
+  parser: babel-eslint
+
+  plugins:
+    - babel
+
+  rules:
+    # Possible errors
+    no-console: warn
+    no-template-curly-in-string: error
+    no-unsafe-negation: error
+    valid-jsdoc: error
+
+    # Best practices
+    consistent-return: error
+    curly:
+      - error
+      - all
+    dot-location:
+      - error
+      - property
+    dot-notation: error
+    eqeqeq:
+      - error
+      - smart
+    no-constant-condition: warn
+    no-else-return: error
+    no-eval: error
+    no-extend-native: error
+    no-global-assign: error
+    babel/no-invalid-this: error
+    no-labels: error
+    no-lone-blocks: error
+    no-loop-func: error
+    no-throw-literal: error
+    no-unused-expressions: error
+    no-useless-call: error
+    no-useless-concat: error
+    no-useless-return: error
+    yoda:
+      - error
+      - never
+
+    # Variables
+    init-declarations:
+      - error
+      - always
+    no-catch-shadow: error
+    no-shadow-restricted-names: error
+    no-shadow: error
+    no-undefined: error
+    no-unused-vars:
+      - warn
+      - ignoreRestSiblings: true
+    no-use-before-define:
+      - error
+      - nofunc
+    no-var: error
+
+    # Stylistic
+    array-bracket-spacing:
+      - error
+      - never
+    arrow-parens:
+      - error
+      - as-needed
+      - requireForBlockBody: true
+    block-spacing:
+      - error
+      - always
+    brace-style:
+      - error
+      - 1tbs
+    camelcase:
+      - error
+      - properties: never
+    capitalized-comments:
+      - warn
+      - always
+      - ignoreConsecutiveComments: true
+    comma-dangle:
+      - error
+      - always-multiline
+    comma-spacing: error
+    comma-style:
+      - error
+      - last
+    computed-property-spacing:
+      - error
+      - never
+    consistent-this:
+      - error
+      - self
+    eol-last: error
+    func-call-spacing:
+      - error
+      - never
+    indent:
+      - error
+      - 2
+      - MemberExpression: 0
+        SwitchCase: 1
+    key-spacing: error
+    keyword-spacing: error
+    no-lonely-if: error
+    no-multi-spaces: error
+    no-multiple-empty-lines:
+      - error
+      - max: 1
+        maxBOF: 0
+        maxEOF: 0
+    no-trailing-spaces: error
+    sort-vars: warn
+    space-before-blocks: error
+    space-before-function-paren:
+      - error
+      - never
+    space-in-parens:
+      - error
+      - never
+    space-unary-ops:
+      - error
+      - words: true
+        nonwords: false
+    no-unneeded-ternary: error
+    object-curly-spacing:
+      - error
+      - never
+    padded-blocks:
+      - error
+      - never
+    quote-props:
+      - error
+      - as-needed
+    semi:
+      - error
+      - always
+    space-infix-ops: error
+    spaced-comment:
+      - warn
+      - always
+    unicode-bom:
+      - error
+      - never
