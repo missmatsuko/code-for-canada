@@ -1,7 +1,11 @@
 body {
   font-family: sans-serif;
   text-align: center;
-  color: #333;
+  color: #005b9f;
+}
+
+main {
+  padding: 20px;
 }
 
 .table-wrapper {
@@ -15,10 +19,35 @@ table {
 }
 
 table, tr, th, td {
-  border: 1px solid currentColor;
+  border: none;
   border-collapse: collapse;
 }
 
 th, td {
   padding: 10px 20px;
+}
+
+thead tr {
+  background-color: #0288d1;
+  color: white;
+}
+
+tr {
+  transition: 0.3s;
+  border-bottom: 1px solid #0288d1;
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f9fc;
+}
+
+tbody:hover tr {
+  background-color: white;
+  opacity: 0.3;
+}
+
+tbody:hover tr:hover {
+  background-color: #f2f9fc;
+  opacity: 1;
 }
