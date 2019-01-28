@@ -40,10 +40,10 @@ module.exports = (env, options) => {
           use: [
             MiniCssExtractPlugin.loader, // Extract to files on build, load as style tag for dev server
             {
-              loader: "css-loader",
+              loader: 'css-loader',
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
                 plugins: () => [
                   autoprefixer, // browserlist should be pulled from package.json
@@ -52,6 +52,16 @@ module.exports = (env, options) => {
               },
             },
           ],
+        },
+        // Handle CSV
+        {
+          test: /\.csv$/,
+          loader: 'csv-loader',
+          options: {
+            dynamicTyping: true,
+            header: true,
+            skipEmptyLines: true,
+          }
         },
       ],
     },
