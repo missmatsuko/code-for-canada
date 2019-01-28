@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+
+    <main>
+      <h1><%= htmlWebpackPlugin.options.title %></h1>
+
+      <div class="table-wrapper">
+        <table id="table">
+
+          <!-- thead -->
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Number of Violations</th>
+              <th>Earliest Violation Date</th>
+              <th>Latest Violation Date</th>
+            </tr>
+          </thead>
+
+          <!-- tbody to be injected with JS -->
+
+        </table>
+      </div>
+
+    </main>
+
+  </body>
+</html>

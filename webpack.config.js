@@ -66,7 +66,13 @@ module.exports = (env, options) => {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        title: 'Building Code Violations Summary',
+        meta: {
+          viewport: 'width=device-width, initial-scale=1',
+        },
+      }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),

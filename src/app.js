@@ -34,4 +34,25 @@ const summaryData = sourceData.reduce(((accumulator, currentValue) => {
   return accumulator;
 }), {});
 
-console.log(summaryData);
+// Inject data into the table body
+const tableEl = document.getElementById('table');
+const tableBody = document.createElement('tbody');
+
+// Populate tableBody with data rows
+for (const category in summaryData) {
+  const tableRow = document.createElement('tr');
+
+  const tableRowHtml = `
+    <td>${category}</td>
+    <td>${summaryData[category].violation_count}</td>
+    <td>${summaryData[category].earliest_violation_date}</td>
+    <td>${summaryData[category].latest_violation_date}</td>
+  `;
+
+  tableRow.innerHTML = tableRowHtml;
+
+  tableBody.appendChild(tableRow);
+}
+
+// Append tableBody into the table element
+tableEl.appendChild(tableBody);

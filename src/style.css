@@ -1,3 +1,24 @@
-* {
-  color: red;
+body {
+  font-family: sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+.table-wrapper {
+  overflow: auto;
+  width: 100%;
+}
+
+table {
+  text-align: left;
+  width: 100%;
+}
+
+table, tr, th, td {
+  border: 1px solid currentColor;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 20px;
 }
