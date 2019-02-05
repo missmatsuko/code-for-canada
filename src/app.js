@@ -22,7 +22,7 @@ const summaryData = sourceData.reduce(((accumulator, currentValue) => {
     if (currentValueDate > accumulatorItem.latest_violation_date) {
       accumulatorItem.latest_violation_date = currentValueDate;
     }
-  }
+  } // eslint-disable-line brace-style
   // If the category doesn't exist in the summary data object...
   else {
     // Create the category in the summary data object with the current item's data
