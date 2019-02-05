@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -83,8 +83,8 @@ module.exports = (env, options) => {
         automaticNameDelimiter: '-',
       },
       minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
+        new TerserPlugin({
+          terserOptions: {
             safari10: true,
           },
         }),
